@@ -12,7 +12,8 @@
 
 #body {
   /* id=body의 부모는 body다. 웹사이트에 보이는 전체를 height로 지정 */
-  height: 100%;
+  /* height:100%면 부모의 크기를 기준으로  vh는 윈도우 높이를 기준으로*/
+  height: 100vh;
   width: 1024px;
   /* 원래 flex를 이용해 부모태그 안에 써야하지만,
   자식이 부모를 기준으로 가운데정렬하는 방법도 있다*/
@@ -97,4 +98,11 @@
   width: 24px;
   /* 보통 width를 조절해주면 height는 가로세율 비율에 맞춰
   알아서 조정된다 */
+}
+
+.product-link {
+  /* 색깔을 a태그에 영향을 받지않고 원래색을 갖게함 */
+  color: inherit;
+  /* 밑줄이 사라진다 */
+  text-decoration: none;
 }
