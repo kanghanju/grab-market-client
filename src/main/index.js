@@ -39,7 +39,7 @@ function MainPage() {
             return (
               <div className="product-card">
                 {/* 리액트 라우터 돔에 link컴포넌트를 사용했지만 결과적으로 브라우저에서 보여줄때는 a태그로 변환된다 */}
-                <Link className="product-link" to={`/products/${index}`}>
+                <Link className="product-link" to={`/products/${product.id}`}>
                   <div>
                     <img className="product-image" src={product.imageUrl} />
                   </div>

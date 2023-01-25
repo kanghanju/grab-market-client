@@ -4,8 +4,8 @@ import "./App.css";
 // 어차피 한 파일에 export default는 한 번만 사용이 가능하기 때문이다.
 import MainPageComponent from "./main/index.js";
 import { Switch, Route } from "react-router-dom";
-import UploadPage from "./upload";
-import ProductPage from "./product";
+import UploadPage from "./upload/index.js";
+import ProductPage from "./product/index.js";
 
 function App() {
   return (
