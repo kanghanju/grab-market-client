@@ -22,45 +22,40 @@ function MainPage() {
   }, []);
   // npm새로운 패키지를 다운받으면 react프로젝트를 새롭게 실행시켜줘야한다
 
+  //In React, a component can only return a single top-level element.
+  //However, you can wrap multiple elements inside a single parent element,
+  //such as a <div> or a <React.Fragment>.
   return (
     <div>
-      <div id="header">
-        <div id="header-area">
-          <img src="./images/icons\logo.png" />
-        </div>
+      <div id="banner">
+        <img src="./images/banners\banner1.png" />
       </div>
-      <div id="body">
-        <div id="banner">
-          <img src="./images/banners\banner1.png" />
-        </div>
-        <h1>판매되는 상품들</h1>
-        <div id="product-list">
-          {products.map(function (product, index) {
-            return (
-              <div className="product-card">
-                {/* 리액트 라우터 돔에 link컴포넌트를 사용했지만 결과적으로 브라우저에서 보여줄때는 a태그로 변환된다 */}
-                <Link className="product-link" to={`/products/${product.id}`}>
-                  <div>
-                    <img className="product-image" src={product.imageUrl} />
+      <h1>판매되는 상품들</h1>
+      <div id="product-list">
+        {products.map(function (product, index) {
+          return (
+            <div className="product-card">
+              {/* 리액트 라우터 돔에 link컴포넌트를 사용했지만 결과적으로 브라우저에서 보여줄때는 a태그로 변환된다 */}
+              <Link className="product-link" to={`/products/${product.id}`}>
+                <div>
+                  <img className="product-image" src={product.imageUrl} />
+                </div>
+                <div className="product-contents">
+                  <span className="product-name">{product.name}</span>
+                  <span className="product-price">{product.price}원</span>
+                  <div className="product-seller">
+                    <img
+                      className="product-avatar"
+                      src="images/icons/avatar.png"
+                    />
+                    <span>{product.seller}</span>
                   </div>
-                  <div className="product-contents">
-                    <span className="product-name">{product.name}</span>
-                    <span className="product-price">{product.price}원</span>
-                    <div className="product-seller">
-                      <img
-                        className="product-avatar"
-                        src="images/icons/avatar.png"
-                      />
-                      <span>{product.seller}</span>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
-        </div>
+                </div>
+              </Link>
+            </div>
+          );
+        })}
       </div>
-      <div id="footer"></div>
     </div>
   );
   // react는 복수개의 태그를 return할 수 없다!따라서 div안에 씌워준다
