@@ -3,15 +3,18 @@ import React from "react";
 import "./index.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+//dayjs에서 확장된 기능 사용
+dayjs.extend(relativeTime);
 
 // react는 실제로 짠 코드들을 프로그램 실행 뒤 마지막에 index.html로 합칩니다. 그래서 그냥 클릭한다고 보이지 않습니다
 function MainPage() {
   const [products, setProducts] = React.useState([]);
   React.useEffect(function () {
     axios
-      .get(
-        "https://17b80db1-c932-4663-bb92-196a187b7491.mock.pstmn.io/products"
-      )
+      .get("http://localhost:8080/products")
       .then(function (result) {
         const products = result.data.products;
         setProducts(products);
@@ -43,12 +46,17 @@ function MainPage() {
                 <div className="product-contents">
                   <span className="product-name">{product.name}</span>
                   <span className="product-price">{product.price}원</span>
-                  <div className="product-seller">
-                    <img
-                      className="product-avatar"
-                      src="images/icons/avatar.png"
-                    />
-                    <span>{product.seller}</span>
+                  <div className="product-footer">
+                    <div className="product-seller">
+                      <img
+                        className="product-avatar"
+                        src="images/icons/avatar.png"
+                      />
+                      <span>{product.seller}</span>
+                    </div>
+                    <span className="product-date">
+                      {dayjs(product.createdAt).fromNow()}
+                    </span>
                   </div>
                 </div>
               </Link>

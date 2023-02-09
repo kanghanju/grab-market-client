@@ -12,11 +12,9 @@ function ProductPage() {
   //우리가 추출한 id에 맞는 네트워크 요청을 해야한다,useEffect를 이용해 네트워크 요청을 1번한다
   React.useEffect(function () {
     axios
-      .get(
-        `https://17b80db1-c932-4663-bb92-196a187b7491.mock.pstmn.io/products/${id}`
-      )
+      .get(`http://localhost:8080/products/${id}`)
       .then(function (result) {
-        setProduct(result.data);
+        setProduct(result.data.product);
       })
       .catch(function (error) {
         console.error(error);
